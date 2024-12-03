@@ -1,4 +1,5 @@
 <template>
+    <the-header></the-header>
     <latest-translations></latest-translations>
     <div class="page-container">
         <translation-source></translation-source>
@@ -10,12 +11,14 @@
 import LatestTranslations from "./components/layout/LatestTranslationsSidebar.vue";
 import TranslationSource from "./components/layout/TranslationSource.vue";
 import TranslationOutput from "./components/layout/TranslationOutput.vue";
+import TheHeader from "./components/layout/TheHeader.vue";
 
 export default {
     components: {
         LatestTranslations,
         TranslationSource,
         TranslationOutput,
+        TheHeader
     },
     setup(props) {
         const clientLanguage = navigator.language;
@@ -28,6 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
+$header-height: 100px;
 
 * {
     box-sizing: border-box;
@@ -39,7 +43,9 @@ body {
     padding: 0;
     color: white;
 }
+
 .page-container {
+    padding-top: $header-height;
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -48,4 +54,7 @@ body {
     background: url('./background-img.png') no-repeat center;
     background-size: cover;
 }
+
+
+
 </style>
