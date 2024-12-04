@@ -1,7 +1,6 @@
 import { promises } from 'fs';
 
-let data = `język	kod
-brithenig	bzt
+let data = `brithenig	bzt
 dżuhuri	jdt
 esperanto	eo
 esperanto (morfem)	eom
@@ -610,7 +609,6 @@ język ruski	zle-ort
 język staroczeski	zlw-ocs
 język starosłowacki	zlw-osk
 język jugorusiński	rsk`;
-
 
 async function createFile() {
     try {

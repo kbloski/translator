@@ -1,18 +1,29 @@
 <template>
     <div class="container">
+        <button>Translate</button>
         <h4>From</h4>
         <base-select 
             title="select source language"
             class="select-language"
         >
-            <option value="test">test</option>
+            <option 
+                v-for="language of languages"
+                :value="language.short"
+            >
+                {{  language.language }}
+            </option>
         </base-select>
         <h4>To</h4>
         <base-select 
             title="select source language"
             class="select-language"
         >
-            <option value="test">test</option>
+             <option 
+                v-for="language of languages"
+                :value="language.short"
+            >
+                {{  language.language }}
+            </option>
         </base-select>
 
         <h3>Soruce code</h3>
@@ -23,16 +34,22 @@
 </template>
 
 <script>
+import { computed, watch } from 'vue';
+import { useFetch } from '../../hooks/useFetch.js';
 export default {
     setup(){
-        fetch('/languages.json')
-        .then( res => {
-            if (!res.ok) console.error('eerr');
-            return res.json()
-        })
-        .then( data => {
-            console.log( data )
-        })
+        const languagesFetch = useFetch('/languages.json')
+        const languagesArr = computed( () => languagesFetch.data.value?.languages.sort( (a,b) => {
+                if (a.language < b.language) return -1;
+                if (a.language > b.language) return 1;
+                return 0;
+        }) ?? [] )
+
+        return {
+            loading: languagesFetch.loading,
+            languages: languagesArr,
+            errors: languagesFetch.errorMessage
+        }
     }
 }
 </script>
@@ -46,9 +63,9 @@ export default {
     width: 40vw;
 
     .select-language {
-        margin: 0 .5rem;
         font-size: 24px;
         text-align: center;
+        text-transform: capitalize;
 
         option {
             text-align: left;
