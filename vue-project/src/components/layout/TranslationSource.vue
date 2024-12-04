@@ -22,6 +22,21 @@
     </div>
 </template>
 
+<script>
+export default {
+    setup(){
+        fetch('/languages.json')
+        .then( res => {
+            if (!res.ok) console.error('eerr');
+            return res.json()
+        })
+        .then( data => {
+            console.log( data )
+        })
+    }
+}
+</script>
+
 <style lang="scss" scoped>
 .container {
     display: flex;
