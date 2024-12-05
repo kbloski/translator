@@ -54,7 +54,7 @@ export default {
         function setTranslateData(){
             store.dispatch('setSourceLang', sourceLang.value)
             store.dispatch('setTranslateLang', translateLang.value)
-            store.dispatch('setTranslateData', sourceText.value)
+            store.dispatch('setSourceText', sourceText.value)
         }
 
         return {
