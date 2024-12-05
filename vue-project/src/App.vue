@@ -71,6 +71,19 @@ body {
         flex-direction: column;
         padding: 1rem;
         width: 50vw;
+}
+
+.btn {
+    padding: .5rem 1rem;
+    background-color: aliceblue;
+    box-shadow: 0 0 4px aliceblue;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgb(210, 234, 255);
     }
+}
+
+
 
 </style>

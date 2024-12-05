@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <button @click="setTranslateData">Translate</button>
+        <button @click="setTranslateData" class="btn">Translate</button>
         <h4>From</h4>
         <base-select 
             class="select-language"
