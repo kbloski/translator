@@ -10,7 +10,6 @@ export function useFetch( url = null, options = {}){
 
     function clearFetch(){
         data.value = null;
-        loading.value = null,
         errorMessage.value = null;
     }
 
@@ -30,7 +29,7 @@ export function useFetch( url = null, options = {}){
         })
         .then( jsonData => data.value = jsonData)
         .catch( err => errorMessage.value = err.message)
-        .finally( loading.value = false)
+        .finally( () => loading.value = false)
     }
 
     watch( fullUrl, () => {
