@@ -8,6 +8,17 @@ export function useFetch( url = null, options = {}){
     const data = ref( null)
     const loading = ref( false)
 
+    function clearFetch(){
+        data.value = null;
+        loading.value = null,
+        errorMessage.value = null;
+    }
+
+    function setNewUrl(url) {
+        clearFetch()
+        fullUrl.value = url;
+    }
+
     function fetchData(){
         errorMessage.value = null;
         loading.value = true;
@@ -31,6 +42,7 @@ export function useFetch( url = null, options = {}){
     return {
         data,
         loading,
-        errorMessage
+        errorMessage,
+        setNewUrl
     }
 }
