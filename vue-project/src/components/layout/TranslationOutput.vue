@@ -1,21 +1,25 @@
 <template>
     <div class="container">
         <div class="content">
-            <base-error>test</base-error>
-            {{ loading }}
-            {{ translatedText }}
+            <div v-if="loading">Loading...</div>            
+            
+            <div v-if="errorMessages"><base-error>{{ errorMessages }}</base-error></div>        
+            <div v-else>
+                <h2>Translation</h2>
+                    {{ translatedText}}
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import { errorMessages } from 'vue/compiler-sfc';
 import { useFetch } from '../../hooks/useFetch';
 
 export default {
     data(){
         return{
             fetchTranslate: useFetch(),
-            translatedText: "Przetłumaczyć coś dla ciebie?"
         }
     },
     watch: {
@@ -27,10 +31,16 @@ export default {
     },
     computed: {
         translatedText(){
-            return this.fetchTranslate.data?.responseData?.translatedText
+            return this.fetchTranslate.data?.responseData?.translatedText ?? null
         },
         loading(){
             return this.fetchTranslate.loading
+        },
+        errorMessages(){
+            const errorCode = Number( this.fetchTranslate.data?.responseStatus)
+            if ( errorCode === 200) return;
+            
+            return this.fetchTranslate.data?.responseData?.translatedText;
         },
         sourceTextVuex(){
             return this.$store.getters['getSourceText']

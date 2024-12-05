@@ -1,6 +1,6 @@
 <template>
     <div class="base-error">
-        <div class="error-title">Error</div>
+        <div class="error-title">Errors</div>
         <slot></slot>
     </div>
 </template>
