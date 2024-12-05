@@ -1,8 +1,19 @@
 <template>
     <header>
-        <h1>Demo translate application</h1>
+        <h1>{{ appName }}</h1>
     </header>
 </template>
+
+<script>
+import { appName } from '@/config';
+export default {
+    data(){
+        return {
+            appName
+        }
+    }
+}
+</script>
 
 <style lang="scss" scoped>
 $header-height: 100px;
