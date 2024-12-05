@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <div class="content">
+            <base-error>test</base-error>
             {{ loading }}
             {{ translatedText }}
         </div>
