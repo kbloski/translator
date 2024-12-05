@@ -46,15 +46,31 @@ body {
 
 .page-container {
     padding-top: $header-height;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     min-height: 100vh;
     width: 100%;
-    overflow-y: auto;
-    background: url('./background-img.png') no-repeat center;
+    max-width: 1000px;
     background-size: cover;
+    
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        min-width: 100vw;
+        min-height: 100vh;
+        background: url('./background-img.png') no-repeat center;
+        z-index: -1;
+    }
 }
 
-
+.container {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        width: 50vw;
+    }
 
 </style>

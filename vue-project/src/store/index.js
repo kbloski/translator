@@ -34,7 +34,6 @@ export default createStore({
         getSourceText(state) {
             return state.sourceText;
         },
-        // Można dodać więcej getterów, np.:
         getSourceLanguageShort(state) {
             return state.sourceLanguageShort;
         },

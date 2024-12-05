@@ -15,3 +15,11 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.content {
+    word-break: break-all;
+    word-wrap: break-word;
+    flex-wrap: wrap;
+}
+</style>

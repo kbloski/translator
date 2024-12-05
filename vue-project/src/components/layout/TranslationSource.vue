@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <button @click="setSourceLanguage">Translate</button>
+        <button @click="setTranslateData">Translate</button>
         <h4>From</h4>
         <base-select 
-            title="select source language"
             class="select-language"
+            v-model="sourceLang"
         >
             <option 
                 v-for="language of languages"
@@ -15,8 +15,8 @@
         </base-select>
         <h4>To</h4>
         <base-select 
-            title="select source language"
             class="select-language"
+            v-model="translateLang"
         >
              <option 
                 v-for="language of languages"
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { computed, watch, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useFetch } from '../../hooks/useFetch.js';
 import { useStore } from 'vuex';
 export default {
@@ -47,10 +47,14 @@ export default {
                 return 0;
         }) ?? [] )
 
+        const sourceLang = ref(null)
+        const translateLang = ref(null)
         const sourceText = ref('')
         
-        function setSourceLanguage(){
-            store.dispatch('setSourceText', sourceText.value)
+        function setTranslateData(){
+            store.dispatch('setSourceLang', sourceLang.value)
+            store.dispatch('setTranslateLang', translateLang.value)
+            store.dispatch('setTranslateData', sourceText.value)
         }
 
         return {
@@ -58,47 +62,43 @@ export default {
             languages: languagesArr,
             errors: languagesFetch.errorMessage,
             sourceText,
-            setSourceLanguage
+            setTranslateData,
+            sourceLang,
+            translateLang
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem;
-    width: 40vw;
 
-    .select-language {
-        font-size: 24px;
-        text-align: center;
-        text-transform: capitalize;
+.select-language {
+    font-size: 24px;
+    text-align: center;
+    text-transform: capitalize;
 
-        option {
-            text-align: left;
-        }
+    option {
+        text-align: left;
     }
-    
-    .content {
-        position: relative;
-        height: 400px;
-        
-        textarea {
-            width: 100%;
-            height: 100%;
-            resize: vertical;
-            border-radius: 1rem;
-            background-color: rgba(255,255,255, .3);
-            padding: 1rem;
-            color: white;
-            
-        }
-    }
-    
 }
+
+.content {
+    position: relative;
+    height: 400px;
+    
+    textarea {
+        width: 100%;
+        height: 100%;
+        resize: vertical;
+        border-radius: 1rem;
+        background-color: rgba(255,255,255, .3);
+        padding: 1rem;
+        color: white;
+        
+    }
+}
+    
+
 
 
 </style>
