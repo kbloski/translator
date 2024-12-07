@@ -4,10 +4,10 @@ export default {
         savedTranslations: [],
     },
     mutations: {
-        // saveTranslation(state, payload){
-        //     localStorage.
-        //     state.savedTranslations
-        // }
+        saveTranslation(state, payload){
+            localStorage.
+            state.savedTranslations.push(payload)
+        },
     },
     actions: {},
     getters: {}

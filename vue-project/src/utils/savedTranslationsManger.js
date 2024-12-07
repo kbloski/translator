@@ -11,6 +11,12 @@ export function clearSavedTranslations(){
     localStorage.setItem(localStorageLastTranslationsKey, null)
 }
 
+export function removeTranslation( id ){
+    const savedTranslations = getSavedTranslations();
+    const newSavedArr = savedTranslations.filter( item => item.id != id);
+    localStorage.setItem( localStorageLastTranslationsKey, newSavedArr)
+}
+
 export function addSavedTranslation(
     sourceLang,
     translateLang,
@@ -19,6 +25,7 @@ export function addSavedTranslation(
 ){
    const savedArr =  getSavedTranslations();
    savedArr.push({
+        id: `${sourceLang}${translateLang}${Math.round(Math.random() * 1000)}`,
         sourceLang,
         translateLang,
         sourceText,

@@ -14,7 +14,7 @@ export default createStore({
     },
     mutations: {
         setSourceLanguage(state, payload) {
-            state.sourceLanguageShort = payload; // Poprawka nazwy zmiennej
+            state.sourceLanguageShort = payload;
         },
         setTranslateLanguage(state, payload) {
             state.translateLanguageShort = payload;
