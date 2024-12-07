@@ -44,6 +44,7 @@ import { useStore } from 'vuex';
 export default {
     setup( props ){
         const store = useStore();
+
         const languagesFetch = useFetch('/languages.json')
         const languagesArr = computed( () => languagesFetch.data.value?.languages.sort( (a,b) => {
                 if (a.language < b.language) return -1;

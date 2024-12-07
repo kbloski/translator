@@ -1,3 +1,4 @@
+import actions from "./actions";
 import mutations from "./mutations";
 
 export default {
@@ -6,7 +7,7 @@ export default {
         savedTranslations: [],
     },
     mutations: mutations,
-    actions: {},
+    actions: actions,
     getters: {}
 }
 
