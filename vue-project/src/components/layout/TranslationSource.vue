@@ -1,7 +1,9 @@
 <template>
     <div class="container">
+        <base-error v-if="errors.languagesFetch"> {{ errors.languagesFetch }}</base-error>
         <button @click="setTranslateData" class="btn">Translate</button>
         <h4>From</h4>
+        <base-error v-if="errors.sourceLang"> {{ errors.sourceLang }}</base-error>
         <base-select 
             class="select-language"
             v-model="sourceLang"
@@ -14,6 +16,7 @@
             </option>
         </base-select>
         <h4>To</h4>
+        <base-error v-if="errors.translateLang"> {{ errors.translateLang }}</base-error>
         <base-select 
             class="select-language"
             v-model="translateLang"
@@ -27,6 +30,7 @@
         </base-select>
 
         <h3>Soruce code</h3>
+        <base-error v-if="errors.sourceText"> {{ errors.sourceText }}</base-error>
         <div class="content">
             <textarea spellcheck="false" v-model="sourceText"></textarea>
         </div>
@@ -34,7 +38,7 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import { computed, ref, reactive } from 'vue';
 import { useFetch } from '../../hooks/useFetch.js';
 import { useStore } from 'vuex';
 export default {
@@ -46,12 +50,45 @@ export default {
                 if (a.language > b.language) return 1;
                 return 0;
         }) ?? [] )
-
         const sourceLang = ref(null)
         const translateLang = ref(null)
         const sourceText = ref('')
+
+        const errors = reactive({
+            isError: computed( () => 
+                !!errors.sourceLang || 
+                !!errors.sourceText || 
+                !!errors.translateLang ||
+                !!errors.languagesFetch
+            ),
+            sourceLang: null, 
+            translateLang: null,
+            sourceText: null,
+            languagesFetch: computed( () => languagesFetch.errorMessage.value ? "Problem with loading languages." : null )
+        })
+
+        function clearErrors(){
+            errors.sourceLang = null;
+            errors.translateLang = null;
+            errors.sourceText = null
+        }
+
+        function validateTranslation(){
+            clearErrors();
+
+            if (!sourceLang.value) errors.sourceLang = "Source lang can't be empty."
+            if (!sourceText.value) errors.sourceText = "Source code can't be empty."
+            if (!translateLang.value) errors.translateLang = "Translate lang can't be empty."
+
+            if ( sourceLang.value && translateLang.value && sourceLang.value === translateLang.value) {
+                errors.translateLang = errors.sourceLang = "Source lang and translate lang can't be the same."
+            }
+        }
         
         function setTranslateData(){
+            validateTranslation();
+            if (errors.isError) return;
+
             store.dispatch('setSourceLang', sourceLang.value)
             store.dispatch('setTranslateLang', translateLang.value)
             store.dispatch('setSourceText', sourceText.value)
@@ -60,7 +97,7 @@ export default {
         return {
             loading: languagesFetch.loading,
             languages: languagesArr,
-            errors: languagesFetch.errorMessage,
+            errors,
             sourceText,
             setTranslateData,
             sourceLang,

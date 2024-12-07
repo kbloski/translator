@@ -1,0 +1,7 @@
+zrobić walidację danych w transl..source
+zrobić zapis lokalny ostatnich tłumaczeń
+zrobić przycisk do otwierania sekcji z ostatnimi tłumaczeniami
+zrobić domyślne ustawienie języka
+
+zrobić podgląd / edycję ostatnich tłumaczeń
+zrobić wersję mobilną aplikacji
