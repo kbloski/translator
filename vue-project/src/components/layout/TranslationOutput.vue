@@ -25,7 +25,6 @@ export default {
     watch: {
         sourceTextVuex( newVal , oldVal ){
             if (!newVal) return;
-            if (oldVal && newVal.trim() === oldVal.trim()) return;
             this.fetchTranslate.setNewUrl( this.createApiLink(newVal) );
         }
     },
