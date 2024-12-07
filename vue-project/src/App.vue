@@ -56,7 +56,7 @@ body {
     
     &:before {
         content: '';
-        position: absolute;
+        position: fixed;
         left: 0;
         top: 0;
         min-width: 100vw;
