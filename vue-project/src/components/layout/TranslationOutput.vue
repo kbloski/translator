@@ -5,7 +5,7 @@
             
             <div v-if="errorMessages"><base-error>{{ errorMessages }}</base-error></div>        
             <div v-else>
-                <h2>Translation</h2>
+                <h2>Results</h2>
                     {{ translatedText}}
             </div>
         </div>
@@ -13,9 +13,7 @@
 </template>
 
 <script>
-import { errorMessages } from 'vue/compiler-sfc';
 import { useFetch } from '../../hooks/useFetch';
-import { saveTranslation } from '@/utils/savedTranslationsManger';
 
 export default {
     data(){
@@ -90,5 +88,9 @@ $background-content: rgba(240, 248, 255, 0.7);
     word-break: break-all;
     word-wrap: break-word;
     flex-wrap: wrap;
+}
+
+h2 {
+    border-bottom: 2px solid black;
 }
 </style>

@@ -45,7 +45,7 @@ body {
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    min-height: 100vh;
+    height: 100%;
     width: 100%;
     max-width: 1000px;
     background-size: cover;
