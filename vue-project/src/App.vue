@@ -1,6 +1,5 @@
 <template>
     <the-header></the-header>
-    <latest-translations></latest-translations>
     <div class="page-container">
         <translation-source></translation-source>
         <translation-output></translation-output>
@@ -8,14 +7,13 @@
 </template>
 
 <script>
-import LatestTranslations from "./components/layout/LatestTranslationsSidebar.vue";
+
 import TranslationSource from "./components/layout/TranslationSource.vue";
 import TranslationOutput from "./components/layout/TranslationOutput.vue";
 import TheHeader from "./components/layout/TheHeader.vue";
 
 export default {
     components: {
-        LatestTranslations,
         TranslationSource,
         TranslationOutput,
         TheHeader

@@ -17,6 +17,7 @@
 
 <script>
 export default {
+    emits: [''],
     data() {
         return {
             visible: false,
@@ -26,13 +27,16 @@ export default {
         closeSidebar() {
             this.visible = false;
         },
+        openSidebar(){
+            this.visible = true;
+        }
     },
 };
 </script>
 
 <style lang="scss" scoped>
-$color-elements: rgba(67, 97, 161, 0.5);
-$color-elements-hover: rgba(51, 86, 161, 0.705);
+$color-elements: rgba(67, 97, 161, 0.9);
+$color-elements-hover: rgba(51, 86, 161, 1);
 
 .sidevar-transition {
     &-enter,
@@ -74,6 +78,7 @@ $color-elements-hover: rgba(51, 86, 161, 0.705);
     top: 0;
     max-width: 30vw;
     height: 100vh;
+    z-index: 100;
 
     header {
         position: relative;
