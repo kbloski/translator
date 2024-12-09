@@ -28,11 +28,11 @@ export default {
             if( !newVal ) return;
 
 
-            saveTranslation({
-                sourceLang: this.sourceLangShort,
-                translateLang: this.translateLangShort,
-                sourceText: this.sourceTextVuex,
-                translateText: newVal
+            this.$store.dispatch('savedTranslations/saveTranslation', {
+                    sourceLang: this.sourceLangShort,
+                    translateLang: this.translateLangShort,
+                    sourceText: this.sourceTextVuex,
+                    translateText: newVal
             })
         },
         sourceTextVuex( newVal , oldVal ){

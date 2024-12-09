@@ -6,9 +6,12 @@
                 <button @click="closeSidebar">X</button>
             </header>
             <ul>
-                <li v-for="i in 19" :key="i">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima,
-                    nostrum.
+                <li v-for="translate in savedTranslations">
+                    <!-- {{ translate.id }} -->
+                    <!-- {{ translate.sourceLang }} -->
+                    <!-- {{ translate.translateLang }} -->
+                    {{ translate.sourceText }}
+                    {{ translate.translateText }}
                 </li>
             </ul>
         </div>
@@ -23,6 +26,11 @@ export default {
             visible: false,
         };
     },
+    computed:{
+        savedTranslations(){
+            return this.$store.getters['savedTranslations/getSavedTranslations']
+        }
+    },
     methods: {
         closeSidebar() {
             this.visible = false;
@@ -31,6 +39,9 @@ export default {
             this.visible = true;
         }
     },
+    // created(){
+    //     console.log( this.$store.getters['savedTranslations/getSavedTranslations'])
+    // }
 };
 </script>
 
