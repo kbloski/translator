@@ -12,6 +12,7 @@
                 v-for="language of languages"
                 :value="language.short"
             >
+                {{ console.log( language.short == sourceLang) }}
                 {{  language.language }}
             </option>
         </base-select>
@@ -51,7 +52,7 @@ export default {
                 if (a.language > b.language) return 1;
                 return 0;
         }) ?? [] )
-        const sourceLang = ref(null)
+        const sourceLang = ref('pl')
         const translateLang = ref(null)
         const sourceText = ref('')
 

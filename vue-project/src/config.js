@@ -1,2 +1,2 @@
-export const appName = "Translate Aplication - DEMO"
+export const appName = "DemoTłumacz"
 export const localStorageLastTranslationsKey = 'last-translations'

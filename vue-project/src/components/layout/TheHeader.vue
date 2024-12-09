@@ -1,8 +1,11 @@
 <template>
     <latest-translations ref="sidebar-translations"></latest-translations>
     <header>
+        <button class="btn" @click="openSidebar">☰</button>
         <h1>{{ appName }}</h1>
-        <button @click="openSidebar">Open Sidebar</button>
+        <div class="">
+        
+        </div>
     </header>
 </template>
 
@@ -32,15 +35,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$header-height: 100px;
-
 header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: $header-height;
-    text-align: center;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
 }
+
+button {
+    background: none;
+    border: none;
+    bottom: 0;
+    border-radius: 1rem;
+    box-shadow: none;
+    color: white;
+    font-size: 2rem;
+    margin: 0 1rem;
+    left: 1rem;
+
+    &:hover {
+        color: black;
+    }
+}
+
+
+
 </style>
 

@@ -29,7 +29,6 @@ export default {
 </script>
 
 <style lang="scss">
-$header-height: 100px;
 
 * {
     box-sizing: border-box;
@@ -43,7 +42,6 @@ body {
 }
 
 .page-container {
-    padding-top: $header-height;
     margin: 0 auto;
     display: flex;
     justify-content: center;
