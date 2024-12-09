@@ -6,7 +6,7 @@ import { localStorageLastTranslationsKey } from "@/config";
 export default {
     namespaced: true,
     state: {
-        savedTranslations: JSON.parse( localStorage.getItem(localStorageLastTranslationsKey)) ?? [],
+        savedTranslations: localStorage.getItem(localStorageLastTranslationsKey) ? JSON.parse( localStorage.getItem(localStorageLastTranslationsKey)) : [],
     },
     mutations: mutations,
     actions: actions,

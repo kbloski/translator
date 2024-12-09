@@ -1,7 +1,7 @@
 import { getSavedTranslations } from "@/utils/savedTranslationsManger"
 
 export default {
-    setTranslations( state, payload){
+    loadTranslations( state, payload){
         state.savedTranslations = getSavedTranslations();
     },
     clearTranslations(){

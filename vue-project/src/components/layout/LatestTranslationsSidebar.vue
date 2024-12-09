@@ -12,6 +12,7 @@
                     <!-- {{ translate.translateLang }} -->
                     {{ translate.sourceText }}
                     {{ translate.translateText }}
+                    <button @click="() => removeTranslation(translate.id)">Delete</button>
                 </li>
             </ul>
         </div>
@@ -32,6 +33,9 @@ export default {
         }
     },
     methods: {
+        removeTranslation( id ){
+            this.$store.dispatch('savedTranslations/deleteById', id)
+        },
         closeSidebar() {
             this.visible = false;
         },

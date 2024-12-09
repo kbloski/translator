@@ -57,7 +57,7 @@ export function getSavedTranslations() {
 export function removeTranslation(id) {
     const savedTranslations = getSavedTranslations();
     const newSavedArr = savedTranslations.filter((item) => item.id != id);
-    localStorage.setItem(localStorageLastTranslationsKey, newSavedArr);
+    localStorage.setItem(localStorageLastTranslationsKey, JSON.stringify( newSavedArr));
 }
 
 export function clearSavedTranslations() {

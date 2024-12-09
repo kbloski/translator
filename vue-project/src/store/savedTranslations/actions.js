@@ -10,6 +10,13 @@ export default {
         if (!payload) throw new Error("Error saveTranslation, please provide object to save.")
 
         const isSaved = saveTranslation( payload );
-        contex.commit('setTranslations', payload);
+        contex.commit("loadTranslations", payload);
     },
+
+    deleteById( context, id){
+        if (!id) throw new Error('Error savedTranslations/deleteById. Provide id.');
+
+        const deleted = removeTranslation( id );
+        context.commit("loadTranslations");
+    }
 }
