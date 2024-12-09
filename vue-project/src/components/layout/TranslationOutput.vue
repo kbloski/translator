@@ -15,6 +15,7 @@
 <script>
 import { errorMessages } from 'vue/compiler-sfc';
 import { useFetch } from '../../hooks/useFetch';
+import { saveTranslation } from '@/utils/savedTranslationsManger';
 
 export default {
     data(){
@@ -23,6 +24,17 @@ export default {
         }
     },
     watch: {
+        translatedText( newVal){
+            if( !newVal ) return;
+
+
+            saveTranslation({
+                sourceLang: this.sourceLangShort,
+                translateLang: this.translateLangShort,
+                sourceText: this.sourceTextVuex,
+                translateText: newVal
+            })
+        },
         sourceTextVuex( newVal , oldVal ){
             if (!newVal) return;
             this.fetchTranslate.setNewUrl( this.createApiLink(newVal) );
