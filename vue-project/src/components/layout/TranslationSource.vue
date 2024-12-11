@@ -51,7 +51,7 @@ export default {
                 if (a.language > b.language) return 1;
                 return 0;
         }) ?? [] )
-        const sourceLang = ref('pl')
+        const sourceLang = ref(null)
         const translateLang = ref(null)
         const sourceText = ref('')
 

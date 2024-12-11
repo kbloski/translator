@@ -80,6 +80,16 @@ body {
     }
 }
 
+@media screen and (max-width: 800px) {
+    .page-container {
+        flex-wrap: wrap;
+    }
+
+    .container {
+        width: 100%;
+    }
+}
+
 
 
 </style>

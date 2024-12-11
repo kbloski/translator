@@ -53,7 +53,7 @@ export default {
     emits: [''],
     data() {
         return {
-            visible: true,
+            visible: false,
             modalData: {
                 sourceLang: null,
                 translateLang: null,

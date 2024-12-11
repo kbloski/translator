@@ -1,6 +1,5 @@
-zrobić sidebar 
-modal z poglądem tłumaczenia 
 zrobić wersję mobilną aplikacji
+
 
 
 zrobić domyślne ustawienie języka // maybe
