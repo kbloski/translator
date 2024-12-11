@@ -57,7 +57,7 @@ body {
         top: 0;
         min-width: 100vw;
         min-height: 100vh;
-        background: url('./background-img.png') no-repeat center;
+        background: url('../public/background-img.png') no-repeat center;
         z-index: -1;
     }
 }
