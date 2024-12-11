@@ -22,6 +22,7 @@ export default {
         }
     },
     watch: {
+        
         translatedText( newVal){
             if( !newVal ) return;
 
@@ -36,7 +37,15 @@ export default {
         sourceTextVuex( newVal , oldVal ){
             if (!newVal) return;
             this.fetchTranslate.setNewUrl( this.createApiLink(newVal) );
-        }
+        },
+        sourceLangShort( newVal , oldVal ){
+            if (!newVal) return;
+            this.fetchTranslate.setNewUrl( this.createApiLink( this.sourceTextVuex) );
+        },
+        translateLangShort( newVal , oldVal ){
+            if (!newVal) return;
+            this.fetchTranslate.setNewUrl( this.createApiLink( this.sourceTextVuex) );
+        },
     },
     computed: {
         translatedText(){
