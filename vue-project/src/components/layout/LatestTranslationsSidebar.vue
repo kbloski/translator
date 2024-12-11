@@ -24,6 +24,7 @@
                 <button @click="closeSidebar">X</button>
             </header>
             <ul>
+                <li v-if="!savedTranslations.length">Brak ostatnich tłumaczeń.</li>
                 <li 
                     v-for="translate in savedTranslations"
                     @click="() => showTranslationDetails( 
@@ -41,7 +42,7 @@
                         {{ translate.translateLang  }}
                         {{ cutTextToLength( translate.translateText ) }}
                     </div>
-                    <button @click="() => removeTranslation(translate.id)" >X</button>
+                    <button @click="(event) => removeTranslation(event, translate.id)" >X</button>
                 </li>
             </ul>
         </div>
@@ -83,7 +84,8 @@ export default {
             this.modalViewTranslation.openModal()
 
         },
-        removeTranslation( id ){
+        removeTranslation( event, id ){
+            event.stopPropagation()
             this.$store.dispatch('savedTranslations/deleteById', id)
         },
         closeSidebar() {
