@@ -17,7 +17,7 @@
             </div>
         </div>
     </base-modal>
-    <transition name="sidevar-transition">
+    <transition name="sidebar-transistion">
         <div class="container-sidebar" v-if="visible">
             <header>
                 <h2>Lastest Translations</h2>
@@ -106,7 +106,7 @@ $background-sidebar-color:  rgba(168, 168, 168, 0.274);;
 $color-elements: rgba(133, 133, 133, 0.9);
 $color-elements-hover: rgb(146, 146, 146);
 
-.sidevar-transition {
+.sidebar-transistion {
     &-enter,
     &-leave {
         &-active {

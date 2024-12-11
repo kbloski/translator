@@ -1,16 +1,16 @@
 <template>
     <teleport to="body">
-        <div>
-                <div 
-                    v-if="visible"
-                    class="modal-backdrop" 
-                >
-                    <div class="modal-container">
-                        <slot></slot>
-                        <button class="modal-btn-close" @click="closeModal">Close</button>
-                    </div>
+        <transition name="modal-transition">
+            <div 
+                v-if="visible"
+                class="modal-backdrop" 
+            >
+                <div class="modal-container">
+                    <slot></slot>
+                    <button class="modal-btn-close" @click="closeModal">Close</button>
                 </div>
-        </div>
+            </div>
+        </transition>
     </teleport>
 </template>
 
@@ -79,6 +79,22 @@ export default {
 
     &:hover {
         background-color: rgb(180, 0, 0);
+    }
+}
+
+.modal-transition {
+    &-enter,
+    &-leave {
+        &-active {
+            transition: all 0.3s ease;
+        }
+
+    }
+
+    &-enter-from,
+    &-leave-to {
+        opacity: 0;
+        transform: scale(1.2);
     }
 }
 </style>
