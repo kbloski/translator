@@ -1,13 +1,15 @@
 <template>
     <teleport to="body">
-        <div 
-            v-if="visible"
-            class="modal-backdrop" 
-        >
-            <div class="modal-container">
-                <slot></slot>
-                <button class="modal-btn-close" @click="closeModal">Close</button>
-            </div>
+        <div>
+                <div 
+                    v-if="visible"
+                    class="modal-backdrop" 
+                >
+                    <div class="modal-container">
+                        <slot></slot>
+                        <button class="modal-btn-close" @click="closeModal">Close</button>
+                    </div>
+                </div>
         </div>
     </teleport>
 </template>
@@ -16,7 +18,7 @@
 export default {
     data(){
         return {
-            visible: true
+            visible: false
         }
     },
     methods: {
@@ -48,6 +50,8 @@ export default {
 .modal-container { 
     min-height: 50vh;
     min-width: 350px;
+    max-width: 1000px;
+    max-height: 90vh;
     background-color: white;
     color: black;
     padding: 1rem;
@@ -55,6 +59,7 @@ export default {
     margin: 1rem;
     position: relative;
     overflow: hidden;
+    overflow-y: auto;
 }
 
 .modal-btn-close {

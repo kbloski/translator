@@ -6,7 +6,9 @@ import store from './store'
 
 const BaseSelect = defineAsyncComponent( () => import('./components/UI/BaseSelect.vue'))
 const BaseError = defineAsyncComponent( () => import('./components/UI/BaseError.vue'))
-const BaseModal = defineAsyncComponent( () => import('./components/UI/BaseModal.vue'))
+// const BaseModal = defineAsyncComponent( () => import('./components/UI/BaseModal.vue'))
+
+import BaseModal from './components/UI/BaseModal.vue'
 
 const app = createApp(App)
 
