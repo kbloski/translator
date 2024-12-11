@@ -6,7 +6,7 @@
         >
             <div class="modal-container">
                 <slot></slot>
-                <button class="modal-btn-close">Close</button>
+                <button class="modal-btn-close" @click="closeModal">Close</button>
             </div>
         </div>
     </teleport>
@@ -17,6 +17,14 @@ export default {
     data(){
         return {
             visible: true
+        }
+    },
+    methods: {
+        closeModal(){
+            this.visible = false;
+        },
+        openModal(){
+            this.visible = true;
         }
     }
 }
@@ -62,5 +70,10 @@ export default {
     padding: .5rem 1rem;
     right: 0rem;
     top: 0rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgb(180, 0, 0);
+    }
 }
 </style>
