@@ -1,5 +1,6 @@
-zrobić przycisk do otwierania sekcji z ostatnimi tłumaczeniami
-zrobić domyślne ustawienie języka
-
-zrobić podgląd / edycję ostatnich tłumaczeń
+zrobić sidebar 
+modal z poglądem tłumaczenia 
 zrobić wersję mobilną aplikacji
+
+
+zrobić domyślne ustawienie języka // maybe

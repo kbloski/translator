@@ -85,6 +85,7 @@ $background-content: rgba(240, 248, 255, 0.7);
 
     padding: 1rem;
     height: 100%;
+    min-height: 400px;
     word-break: break-all;
     word-wrap: break-word;
     flex-wrap: wrap;

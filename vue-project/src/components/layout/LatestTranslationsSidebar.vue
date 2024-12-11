@@ -7,12 +7,15 @@
             </header>
             <ul>
                 <li v-for="translate in savedTranslations">
-                    <!-- {{ translate.id }} -->
-                    <!-- {{ translate.sourceLang }} -->
-                    <!-- {{ translate.translateLang }} -->
-                    {{ translate.sourceText }}
-                    {{ translate.translateText }}
-                    <button @click="() => removeTranslation(translate.id)">Delete</button>
+                    <div>
+                        {{ translate.sourceLang  }}
+                        {{ cutTextToLength( translate.sourceText ) }}
+                    </div>
+                    <div>
+                        {{ translate.translateLang  }}
+                        {{ cutTextToLength( translate.translateText ) }}
+                    </div>
+                    <button @click="() => removeTranslation(translate.id)" >X</button>
                 </li>
             </ul>
         </div>
@@ -24,7 +27,8 @@ export default {
     emits: [''],
     data() {
         return {
-            visible: false,
+            // visible: false,
+            visible: true,
         };
     },
     computed:{
@@ -41,17 +45,20 @@ export default {
         },
         openSidebar(){
             this.visible = true;
+        },
+        cutTextToLength( text, length = 20 ){
+            if (text.length < length) return text;
+
+            return text.slice(0, length).trim() + '...'
         }
     },
-    // created(){
-    //     console.log( this.$store.getters['savedTranslations/getSavedTranslations'])
-    // }
 };
 </script>
 
 <style lang="scss" scoped>
-$color-elements: rgba(67, 97, 161, 0.9);
-$color-elements-hover: rgba(51, 86, 161, 1);
+$background-sidebar-color:  rgba(168, 168, 168, 0.274);;
+$color-elements: rgba(133, 133, 133, 0.9);
+$color-elements-hover: rgb(146, 146, 146);
 
 .sidevar-transition {
     &-enter,
@@ -87,32 +94,35 @@ $color-elements-hover: rgba(51, 86, 161, 1);
 .container-sidebar {
     position: fixed;
     left: 0;
-    background-color: rgba(67, 97, 161, 0.274);
+    background-color: $background-sidebar-color;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 10px $color-elements;
     top: 0;
-    max-width: 30vw;
+    max-width: 350px;
     height: 100vh;
     z-index: 100;
+    padding-top: 1rem;
 
     header {
         position: relative;
 
         h2 {
             text-align: center;
+            max-width: 50%;
+            margin: 0 auto;
         }
 
         button {
             aspect-ratio: 1/1;
             background-color: $color-elements;
-            color: white;
             border: 0;
-            box-shadow: 0 0 4px rgb(143, 182, 255);
-            height: 100%;
-            position: absolute;
-            right: 1rem;
-            top: 0;
+            box-shadow: 0 0 4px $color-elements-hover;
             cursor: pointer;
+            color: white;
+            position: absolute;
+            top: 0;
+            right: 1rem;
+            width: 40px;
 
             &:hover {
                 background-color: $color-elements-hover;
@@ -125,7 +135,6 @@ $color-elements-hover: rgba(51, 86, 161, 1);
         margin: 0;
         padding: 2rem;
         overflow-y: scroll;
-        // max-height: calc(90vh);
         height: 100%;
 
         &::-webkit-scrollbar {
@@ -151,11 +160,30 @@ $color-elements-hover: rgba(51, 86, 161, 1);
             padding: 1rem;
             background-color: $color-elements;
             cursor: pointer;
-            max-height: 100px;
-            overflow: hidden;
+            position: relative;
 
             &:hover {
                 background-color: $color-elements-hover;
+            }
+
+            & > * {
+                margin-bottom: .2rem;
+            }
+
+            & > button {
+                position: absolute;
+                right: 0;
+                top: 0;
+                transform: translate( 50%, -20%);
+                background-color: rgba(151, 1, 1, 0.733);
+                border: none;
+                color: white;
+                float: right;
+                height: 25px;
+                border-radius: 50%;
+                aspect-ratio: 1/1;
+                padding: .2rem;
+                cursor: pointer;
             }
         }
     }
