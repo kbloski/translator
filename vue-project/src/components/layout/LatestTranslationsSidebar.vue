@@ -1,4 +1,7 @@
 <template>
+    <base-modal>
+        <div>Tłumaczenie</div> 
+    </base-modal>
     <transition name="sidevar-transition">
         <div class="container-sidebar" v-if="visible">
             <header>
