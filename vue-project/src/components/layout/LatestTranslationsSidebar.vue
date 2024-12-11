@@ -155,9 +155,9 @@ $color-elements-hover: rgb(146, 146, 146);
         position: relative;
 
         h2 {
-            text-align: center;
+            text-align: left;
             max-width: 50%;
-            margin: 0 auto;
+            margin: 0 1rem;
         }
 
         button {
