@@ -12,7 +12,6 @@
                 v-for="language of languages"
                 :value="language.short"
             >
-                {{ console.log( language.short == sourceLang) }}
                 {{  language.language }}
             </option>
         </base-select>

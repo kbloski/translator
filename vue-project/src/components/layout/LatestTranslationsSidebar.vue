@@ -1,15 +1,38 @@
 <template>
-    <base-modal>
-        <div>Tłumaczenie</div> 
+    <!-- <div></div> -->
+    <base-modal ref="modalViewTranslation">
+        <div class="modal-translation-details">
+            <div>Tłumaczenie</div> 
+            <div>
+            From {{ modalData.sourceLang }}:
+            </div>
+            <div>
+                {{  modalData.sourceText }}
+            </div>
+            <div>
+                To {{ modalData.translateLang }}:
+            </div>
+            <div>
+                {{  modalData.translateText }}
+            </div>
+        </div>
     </base-modal>
     <transition name="sidevar-transition">
         <div class="container-sidebar" v-if="visible">
             <header>
-                <h2>Lastest Transactions</h2>
+                <h2>Lastest Translations</h2>
                 <button @click="closeSidebar">X</button>
             </header>
             <ul>
-                <li v-for="translate in savedTranslations">
+                <li 
+                    v-for="translate in savedTranslations"
+                    @click="() => showTranslationDetails( 
+                        translate.sourceLang,
+                        translate.sourceText,
+                        translate.translateLang,
+                        translate.translateText
+                    )"
+                >
                     <div>
                         {{ translate.sourceLang  }}
                         {{ cutTextToLength( translate.sourceText ) }}
@@ -30,16 +53,36 @@ export default {
     emits: [''],
     data() {
         return {
-            // visible: false,
             visible: true,
+            modalData: {
+                sourceLang: null,
+                translateLang: null,
+                sourceText: null,
+                translateText: null
+            }, 
+            modalViewTranslation: null
         };
     },
+    mounted() {
+        this.modalViewTranslation = this.$refs.modalViewTranslation
+    },
+
     computed:{
         savedTranslations(){
             return this.$store.getters['savedTranslations/getSavedTranslations']
         }
     },
     methods: {
+        showTranslationDetails( sourceLang, sourceText, translateLang, translateText ){
+
+            this.modalData.sourceLang = sourceLang;
+            this.modalData.sourceText = sourceText;
+            this.modalData.translateLang = translateLang;
+            this.modalData.translateText = translateText;
+
+            this.modalViewTranslation.openModal()
+
+        },
         removeTranslation( id ){
             this.$store.dispatch('savedTranslations/deleteById', id)
         },
@@ -103,7 +146,7 @@ $color-elements-hover: rgb(146, 146, 146);
     top: 0;
     max-width: 350px;
     height: 100vh;
-    z-index: 100;
+    z-index: 1;
     padding-top: 1rem;
 
     header {
@@ -189,6 +232,12 @@ $color-elements-hover: rgb(146, 146, 146);
                 cursor: pointer;
             }
         }
+    }
+}
+
+.modal-translation-details {
+    & > * {
+        margin-bottom: 1rem;
     }
 }
 </style>
