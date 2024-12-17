@@ -11,7 +11,7 @@
 
 <script>
 import { appName } from '@/config';
-import LatestTranslations from "./LatestTranslationsSidebar.vue";
+import LatestTranslations from "./Sidebar.vue";
 
 export default {
     components: {
